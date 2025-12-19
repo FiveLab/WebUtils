@@ -64,4 +64,19 @@ describe('on dom events', () => {
         expect(outerCb).toHaveBeenCalledOnce();
         expect(outerCb).toHaveBeenCalledWith(outerEl, expect.any(Event));
     });
+
+    it('success handle with specific target', () => {
+        const cb = vi.fn();
+
+        onDomEvents('click', {
+            target: '#root',
+            selector: '.outer'
+        }, cb);
+
+        rootEl.dispatchEvent(new Event('click', eventOptions));
+        outerEl.dispatchEvent(new Event('click', eventOptions));
+
+        expect(cb).toHaveBeenCalledOnce();
+        expect(cb).toHaveBeenCalledWith(outerEl, expect.any(Event));
+    })
 });

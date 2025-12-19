@@ -1,0 +1,38 @@
+name: Testing
+
+on:
+    push: ~
+    pull_request: ~
+
+jobs:
+    code-style:
+        name: Check code style
+        runs-on: ubuntu-latest
+
+        steps:
+            -   name: Checkout
+                uses: actions/checkout@v5
+
+            -   name: Setup node
+                uses: actions/setup-node@v4
+                with:
+                    node-version: '25.x'
+
+            -   name: Check code style
+                run: npm run lint
+
+    tests:
+        name: Run tests
+        runs-on: ubuntu-latest
+
+        steps:
+            -   name: Checkout
+                uses: actions/checkout@v5
+
+            -   name: Setup node
+                uses: actions/setup-node@v4
+                with:
+                    node-version: '25.x'
+
+            -   name: Run tests
+                run: npm run test
