@@ -26,8 +26,8 @@ export function onDomEvents(eventName: EventName, options: SelectorsListenOption
 export function onDomEvents(eventName: EventName, options: SelectorListenOptions | SelectorsListenOptions | string, handler?: EventHandler): void {
     if (typeof options === 'string') {
         options = <SelectorListenOptions>{
-            selector: options
-        }
+            selector: options,
+        };
     }
 
     if (options.selectors && handler) {
@@ -61,7 +61,7 @@ export function onDomEvents(eventName: EventName, options: SelectorListenOptions
         }
 
         return null;
-    }
+    };
 
     onDomReady(() => {
         let target: Element | null = document.body;
