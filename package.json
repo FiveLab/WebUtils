@@ -1,5 +1,6 @@
 {
     "name": "@fivelab/web-utils",
+    "version": "1.0.0",
     "private": false,
     "type": "module",
     "description": "The helpers for easy manipulate with dom.",
@@ -34,5 +35,8 @@
         "test:watch": "vitest",
         "lint": "eslint src",
         "prepublishOnly": "npm run clean && npm run lint && npm run test && npm run build"
+    },
+    "publishConfig": {
+        "access": "public"
     }
 }
