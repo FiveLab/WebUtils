@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+Next release
+------------
+
+* Add few behaviors for dom events.
+* Add helpers for work with attributes and states of elements.
+
 v1.0.2
 ------
 

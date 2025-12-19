@@ -1,5 +1,10 @@
 // DOM manipulation
-export { onDomReady } from './dom/dom-ready';
-export { onDomChanges } from './dom/dom-changes';
-export { onDomEvents } from './dom/dom-events';
-export { showElement, hideElement } from './dom/dom-visibility';
+export * from './dom/attributes';
+export * from './dom/changes';
+export * from './dom/events';
+export * from './dom/ready';
+export * from './dom/state';
+export * from './dom/visibility';
+
+// Behaviors
+export * from './behaviors/confirm';

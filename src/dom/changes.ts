@@ -1,4 +1,4 @@
-import { onDomReady } from './dom-ready';
+import { onDomReady } from './ready';
 
 type BaseDomChangeOptions = MutationObserverInit & {
     readonly onDomReady?: boolean; // execute handler after dom ready?

@@ -1,4 +1,4 @@
-import { onDomReady } from './dom-ready';
+import { onDomReady } from './ready';
 
 export type EventHandler = (element: Element, event: Event) => void;
 export type EventHandlers = Record<string, EventHandler>;
