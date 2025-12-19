@@ -18,6 +18,9 @@ jobs:
                 with:
                     node-version: '25.x'
 
+            -   name: Install vendors
+                run: npm install
+
             -   name: Check code style
                 run: npm run lint
 
@@ -33,6 +36,9 @@ jobs:
                 uses: actions/setup-node@v4
                 with:
                     node-version: '25.x'
+
+            -   name: Install vendors
+                run: npm install
 
             -   name: Run tests
                 run: npm run test
