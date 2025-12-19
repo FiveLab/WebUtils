@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+v1.0.2
+------
+
+* Add rollup bundler for build.
+
 v1.0.1
 ------
 
