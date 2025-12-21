@@ -39,17 +39,17 @@ describe('create toastr adapter', () => {
     });
 
     it('warning', async () => {
-        await adapter.info('warning message');
+        await adapter.warning('warning message');
 
-        expect(toastrMock.info).toHaveBeenCalledOnce();
-        expect(toastrMock.info).toHaveBeenCalledWith('warning message');
+        expect(toastrMock.warning).toHaveBeenCalledOnce();
+        expect(toastrMock.warning).toHaveBeenCalledWith('warning message');
     });
 
     it('error', async () => {
-        await adapter.info('error message');
+        await adapter.error('error message');
 
-        expect(toastrMock.info).toHaveBeenCalledOnce();
-        expect(toastrMock.info).toHaveBeenCalledWith('error message');
+        expect(toastrMock.error).toHaveBeenCalledOnce();
+        expect(toastrMock.error).toHaveBeenCalledWith('error message');
     });
 
     it('call to configurator', async () => {

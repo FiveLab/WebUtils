@@ -16,6 +16,8 @@ const event = new MouseEvent('click', {
     bubbles: true
 });
 
+event.preventDefault = vi.fn();
+
 describe('copy behavior', () => {
     let writeText: Mock;
 
@@ -23,7 +25,8 @@ describe('copy behavior', () => {
         writeText = mockClipboard();
 
         document.body.innerHTML = '<a data-copy="value for copy" id="single-copy">Copy single</a>' +
-            '<a data-copy="value for copy 2" data-copy-message="SUCCESS COPY" id="copy-with-message">Copy with message</a>';
+            '<a data-copy="value for copy 2" data-copy-message="SUCCESS COPY" id="copy-with-message">Copy with message</a>' +
+            '<a href="#" data-copy="abra" id="with-hash"></a>';
     });
 
     afterEach(() => {
@@ -36,6 +39,14 @@ describe('copy behavior', () => {
 
         expect(writeText).toHaveBeenCalledOnce();
         expect(writeText).toHaveBeenCalledWith('value for copy');
+        expect(event.preventDefault).not.toBeCalled();
+    });
+
+    it('should prevent default for #', async () => {
+        await copyBehavior(document.getElementById('with-hash')!, event);
+
+        expect(writeText).toHaveBeenCalledOnce();
+        expect(event.preventDefault).toBeCalled();
     });
 
     it('success copy with message', async () => {

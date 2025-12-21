@@ -25,6 +25,7 @@
         "@types/toastr": "^2.1.43",
         "@typescript-eslint/eslint-plugin": "~8.50",
         "@typescript-eslint/parser": "~8.50",
+        "@vitest/coverage-v8": "^4.0.16",
         "eslint": "~9.39",
         "jsdom": "~27.3",
         "notyf": "^3.10.0",
@@ -42,6 +43,7 @@
         "build": "npm run clean && npm run build:js && npm run build:types",
         "test": "vitest run",
         "test:watch": "vitest",
+        "test:coverage": "vitest run --coverage",
         "lint": "eslint src",
         "dev": "vite",
         "prepublishOnly": "npm run clean && npm run lint && npm run test && npm run build"

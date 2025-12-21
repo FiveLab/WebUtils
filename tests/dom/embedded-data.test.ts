@@ -33,6 +33,27 @@ describe('read embedded data', () => {
         expect(result).toStrictEqual(expected);
     });
 
+    it('read from script element', () => {
+        const el = <HTMLScriptElement>document.getElementById('my-data');
+        const result = readEmbeddedData(el);
+
+        expect(result).toStrictEqual({foo: 'bar'});
+    });
+
+    it('error read from another element', () => {
+        const el = document.createElement('span');
+
+        expect(() => {
+            readEmbeddedData(<HTMLScriptElement>el);
+        }).toThrowError(new Error('Can\'t read embedded data from "SPAN" node.'));
+    });
+
+    it('throw error for unknown element', () => {
+        expect(() => {
+            readEmbeddedData(<HTMLScriptElement>{});
+        }).toThrowError(new TypeError('Unknown input script.'));
+    })
+
     it('error for not existence script', () => {
         expect(() => {
             readEmbeddedData('blabla');
