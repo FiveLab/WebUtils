@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { onDomReady } from '../../src';
+import { onDomReady } from '../../src/dom';
 
 describe('on dom ready', () => {
     beforeEach(() => {

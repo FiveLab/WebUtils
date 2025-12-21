@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it } from 'vitest';
-import { readBoolAttribute } from '../../src';
+import { readBoolAttribute } from '../../src/dom';
 
-describe('dom attributes', () => {
+describe('read boolean attribute', () => {
     let el: HTMLDivElement;
 
     beforeEach(() => {
@@ -15,21 +15,17 @@ describe('dom attributes', () => {
         ['0', false],
         ['no', false],
         ['false', false]
-    ])('read boolean attribute (%s, %s)', (attrValue: string, expected: boolean) => {
+    ])('read(%s) -> %s', (attrValue: string, expected: boolean) => {
         el.setAttribute('data-attr', attrValue);
 
         expect(readBoolAttribute(el, 'data-attr')).toBe(expected);
     });
 
-    it('success read for missed attr', () => {
-        expect(readBoolAttribute(el, 'data-attr')).toBeFalsy();
-    });
-
-    it('undefined if missed attr', () => {
+    it('undefined if missed', () => {
         expect(readBoolAttribute(el, 'data-attr')).toBeUndefined();
     });
 
-    it('return default if missed attr', () => {
+    it('return default if missed', () => {
         expect(readBoolAttribute(el, 'data-attr', false)).toBeFalsy();
     });
 });

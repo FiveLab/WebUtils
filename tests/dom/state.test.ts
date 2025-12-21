@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from 'vitest';
-import { disableElement, enableElement, isDisabled } from '../../src';
+import { disableElement, enableElement, isDisabled } from '../../src/dom';
 
 describe('element states', () => {
     let el: HTMLElement;

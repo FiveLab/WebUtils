@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { onDomChanges } from '../../src';
+import { onDomChanges } from '../../src/dom';
 
 describe('on dom changes', () => {
     beforeEach(() => {

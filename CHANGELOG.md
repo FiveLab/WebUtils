@@ -4,8 +4,9 @@ CHANGELOG
 Next release
 ------------
 
-* Add few behaviors for dom events.
+* Add few behaviors for dom events (copy/confirm).
 * Add helpers for work with attributes and states of elements.
+* Add UI notifications with adapters (toastr, notyf).
 
 v1.0.2
 ------

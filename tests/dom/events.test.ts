@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { onDomEvents } from '../../src';
+import { onDomEvents } from '../../src/dom';
 
 describe('on dom events', () => {
     let innerEl: HTMLSpanElement;

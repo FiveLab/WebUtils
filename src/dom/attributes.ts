@@ -10,3 +10,14 @@ export function readBoolAttribute(element: HTMLElement, attribute: string, defau
 
     return !(value === '0' || value === 'no' || value === 'false');
 }
+
+export function readStringAttribute(element: HTMLElement, attribute: string): string;
+export function readStringAttribute(element: HTMLElement, attribute: string, defaultValue?: string): string;
+
+export function readStringAttribute(element: HTMLElement, attribute: string, defaultValue?: string): string {
+    if (!element.hasAttribute(attribute)) {
+        return typeof defaultValue === 'string' ? defaultValue : '';
+    }
+
+    return String(element.getAttribute(attribute));
+}

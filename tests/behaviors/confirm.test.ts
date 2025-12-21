@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { confirmBehavior } from '../../src';
+import { confirmBehavior } from '../../src/behaviors';
 import * as nav from '../../src/browser/navigation';
 
 describe('confirm behavior', () => {

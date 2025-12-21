@@ -4,13 +4,17 @@ import dts from 'rollup-plugin-dts';
 
 export default [
     {
-        input: 'src/index.ts',
+        input: [
+            './src/dom/index.ts',
+            './src/behaviors/index.ts',
+            './src/browser/index.ts'
+        ],
         output: {
             dir: 'dist',
             format: 'esm',
             preserveModules: true,
             preserveModulesRoot: 'src',
-            sourcemap: true
+            sourcemap: true,
         },
         plugins: [
             resolve({

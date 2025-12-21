@@ -1,7 +1,7 @@
 import { onDomReady } from './ready';
 
-export type EventHandler = (element: Element, event: Event) => void;
-export type EventHandlers = Record<string, EventHandler>;
+export type EventHandler<E extends Element = Element> = (element: E, event: Event) => void;
+export type EventHandlers<E extends Element = Element> = Record<string, EventHandler<E>>;
 
 type EventName = 'click' | 'change';
 type Selector = string;
@@ -15,15 +15,15 @@ type SelectorListenOptions = BaseListenOptions & {
     selectors?: never;
 }
 
-type SelectorsListenOptions = BaseListenOptions & {
-    readonly selectors: EventHandlers;
+type SelectorsListenOptions<E extends Element = Element> = BaseListenOptions & {
+    readonly selectors: EventHandlers<E>;
     selector?: never;
 }
 
-export function onDomEvents(eventName: EventName, options: SelectorListenOptions | string, handler: EventHandler): void;
-export function onDomEvents(eventName: EventName, options: SelectorsListenOptions): void;
+export function onDomEvents<E extends Element = Element>(eventName: EventName, options: SelectorListenOptions | string, handler: EventHandler<E>): void;
+export function onDomEvents<E extends Element = Element>(eventName: EventName, options: SelectorsListenOptions<E>): void;
 
-export function onDomEvents(eventName: EventName, options: SelectorListenOptions | SelectorsListenOptions | string, handler?: EventHandler): void {
+export function onDomEvents<E extends Element = Element>(eventName: EventName, options: SelectorListenOptions | SelectorsListenOptions<E> | string, handler?: EventHandler<E>): void {
     if (typeof options === 'string') {
         options = <SelectorListenOptions>{
             selector: options,
@@ -37,14 +37,14 @@ export function onDomEvents(eventName: EventName, options: SelectorListenOptions
     let selectors: EventHandlers;
 
     if (options.selectors) {
-        selectors = options.selectors;
+        selectors = options.selectors as EventHandlers;
     } else {
         if (!handler) {
             throw new Error('Missed handler');
         }
 
         selectors = {};
-        selectors[options.selector] = handler;
+        selectors[options.selector] = handler as EventHandler;
     }
 
     const findHandler = (selectors: EventHandlers, element: HTMLElement): [HTMLElement, EventHandler] | null => {

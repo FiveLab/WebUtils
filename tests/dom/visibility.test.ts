@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from 'vitest';
-import { hideElement, showElement } from '../../src';
+import { hideElement, showElement } from '../../src/dom';
 
 describe('dom visibility', () => {
     let innerEl: HTMLElement;
