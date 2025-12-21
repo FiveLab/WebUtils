@@ -1,6 +1,11 @@
 import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
-import dts from 'rollup-plugin-dts';
+import pkg from './package.json' with {type: 'json'};
+
+const externals = [
+    ...Object.keys(pkg.peerDependencies ?? {}),
+    ...Object.keys(pkg.dependencies ?? {}),
+];
 
 export default [
     {
@@ -9,12 +14,18 @@ export default [
             './src/behaviors/index.ts',
             './src/browser/index.ts'
         ],
+        preserveEntrySignatures: 'exports-only',
         output: {
             dir: 'dist',
             format: 'esm',
             preserveModules: true,
             preserveModulesRoot: 'src',
             sourcemap: true,
+        },
+        external: (id) => {
+            return externals.some(
+                (dep) => id === dep || id.startsWith(`${dep}/`)
+            );
         },
         plugins: [
             resolve({
