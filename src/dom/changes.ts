@@ -17,8 +17,8 @@ type SelectorsDomChangeOptions = BaseDomChangeOptions & {
 
 type DomChangeOptions = SelectorsDomChangeOptions | SelectorDomChangeOptions;
 
-export type DomChangeCallback = (target: Element, item?: MutationRecord) => void;
-export type DomChangeCallbacks = Record<string, DomChangeCallback>;
+export type DomChangeCallback<T extends Element = Element> = (target: T, item?: MutationRecord) => void;
+export type DomChangeCallbacks<T extends Element = Element> = Record<string, DomChangeCallback<T>>;
 
 export function onDomChanges(options: SelectorDomChangeOptions, callback: DomChangeCallback): void;
 export function onDomChanges(options: SelectorsDomChangeOptions): void;

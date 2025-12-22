@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, Mock, vi } from 'vitest';
-import { copyBehavior, createCopyBehavior } from '../../src/behaviors';
+import { createCopyBehavior } from '../../src/behaviors';
 
 function mockClipboard(): Mock {
     const writeText = vi.fn().mockResolvedValue(undefined);
@@ -35,6 +35,7 @@ describe('copy behavior', () => {
     });
 
     it('success copy', async () => {
+        const copyBehavior = createCopyBehavior();
         await copyBehavior(document.getElementById('single-copy')!, event);
 
         expect(writeText).toHaveBeenCalledOnce();
@@ -43,6 +44,7 @@ describe('copy behavior', () => {
     });
 
     it('should prevent default for #', async () => {
+        const copyBehavior = createCopyBehavior();
         await copyBehavior(document.getElementById('with-hash')!, event);
 
         expect(writeText).toHaveBeenCalledOnce();
@@ -52,46 +54,13 @@ describe('copy behavior', () => {
     it('success copy with message', async () => {
         const cb = vi.fn();
 
-        await copyBehavior(document.getElementById('copy-with-message')!, event, {
-            success: cb
-        });
+        const copyBehavior = createCopyBehavior({success: cb});
+        await copyBehavior(document.getElementById('copy-with-message')!, event);
 
         expect(writeText).toHaveBeenCalledOnce();
         expect(writeText).toHaveBeenCalledWith('value for copy 2');
 
         expect(cb).toHaveBeenCalledOnce();
         expect(cb).toHaveBeenCalledWith('SUCCESS COPY', expect.any(HTMLAnchorElement));
-    });
-});
-
-
-describe('create copy behavior', () => {
-    let writeText: Mock;
-
-    beforeEach(() => {
-        writeText = mockClipboard();
-
-        document.body.innerHTML = '<a data-copy="value" id="single-copy">Copy</a>';
-    });
-
-    afterEach(() => {
-        vi.unstubAllGlobals();
-        vi.resetAllMocks();
-    });
-
-    it('success create behavior', async () => {
-        const cb = vi.fn();
-
-        const behavior = createCopyBehavior({
-            success: cb
-        });
-
-        await behavior(document.getElementById('single-copy')!, event);
-
-        expect(writeText).toHaveBeenCalledOnce();
-        expect(writeText).toHaveBeenCalledWith('value');
-
-        expect(cb).toHaveBeenCalledOnce();
-        expect(cb).toHaveBeenCalledWith('Success copy to clipboard.', expect.any(HTMLAnchorElement));
     });
 });

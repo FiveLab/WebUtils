@@ -1,7 +1,7 @@
 import { onDomReady } from './ready';
 
-export type EventHandler<E extends Element = Element> = (element: E, event: Event) => void;
-export type EventHandlers<E extends Element = Element> = Record<string, EventHandler<E>>;
+export type DomEventCallback<E extends Element = Element> = (element: E, event: Event) => void | Promise<void>;
+export type DomEventCallbacks<E extends Element = Element> = Record<string, DomEventCallback<E>>;
 
 type EventName = 'click' | 'change';
 type Selector = string;
@@ -16,14 +16,14 @@ type SelectorListenOptions = BaseListenOptions & {
 }
 
 type SelectorsListenOptions<E extends Element = Element> = BaseListenOptions & {
-    readonly selectors: EventHandlers<E>;
+    readonly selectors: DomEventCallbacks<E>;
     selector?: never;
 }
 
-export function onDomEvents<E extends Element = Element>(eventName: EventName, options: SelectorListenOptions | string, handler: EventHandler<E>): void;
+export function onDomEvents<E extends Element = Element>(eventName: EventName, options: SelectorListenOptions | string, handler: DomEventCallback<E>): void;
 export function onDomEvents<E extends Element = Element>(eventName: EventName, options: SelectorsListenOptions<E>): void;
 
-export function onDomEvents<E extends Element = Element>(eventName: EventName, options: SelectorListenOptions | SelectorsListenOptions<E> | string, handler?: EventHandler<E>): void {
+export function onDomEvents<E extends Element = Element>(eventName: EventName, options: SelectorListenOptions | SelectorsListenOptions<E> | string, handler?: DomEventCallback<E>): void {
     if (typeof options === 'string') {
         options = <SelectorListenOptions>{
             selector: options,
@@ -34,20 +34,20 @@ export function onDomEvents<E extends Element = Element>(eventName: EventName, o
         throw new Error('Only one option must be provided: either selectors or callback, not both.');
     }
 
-    let selectors: EventHandlers;
+    let selectors: DomEventCallbacks;
 
     if (options.selectors) {
-        selectors = options.selectors as EventHandlers;
+        selectors = options.selectors as DomEventCallbacks;
     } else {
         if (!handler) {
             throw new Error('Missed handler');
         }
 
         selectors = {};
-        selectors[options.selector] = handler as EventHandler;
+        selectors[options.selector] = handler as DomEventCallback;
     }
 
-    const findHandler = (selectors: EventHandlers, element: HTMLElement): [HTMLElement, EventHandler] | null => {
+    const findHandler = (selectors: DomEventCallbacks, element: HTMLElement): [HTMLElement, DomEventCallback] | null => {
         for (const [selector, handler] of Object.entries(selectors)) {
             if (element.matches(selector)) {
                 return [element, handler];

@@ -1,5 +1,5 @@
 import { copyToClipboard } from '../browser';
-import { readStringAttribute } from '../dom';
+import { DomEventCallback, readStringAttribute } from '../dom';
 
 export type CopyBehaviorOptions = {
     success?: (text: string, element: HTMLElement) => void;
@@ -8,23 +8,21 @@ export type CopyBehaviorOptions = {
 export const kAttrCopy = 'data-copy';
 export const kAttrMessage = 'data-copy-message';
 
-export async function copyBehavior(element: HTMLElement, event: Event, options?: CopyBehaviorOptions) {
+const copyBehavior: DomEventCallback<HTMLElement> = async (element: HTMLElement, event: Event) => {
     if (element.nodeName.toLowerCase() === 'a' && element.getAttribute('href') === '#') {
         event.preventDefault();
     }
 
     const data = readStringAttribute(element, kAttrCopy);
-    const message = readStringAttribute(element, kAttrMessage, 'Success copy to clipboard.');
 
     await copyToClipboard(data);
+};
 
-    if (options && options.success) {
-        options.success(message, element);
-    }
-}
-
-export function createCopyBehavior(options: CopyBehaviorOptions) {
+export const createCopyBehavior = (options?: CopyBehaviorOptions): DomEventCallback<HTMLElement> => {
     return async (el: HTMLElement, ev: Event) => {
-        await copyBehavior(el, ev, options);
+        await copyBehavior(el, ev);
+
+        const message = readStringAttribute(el, kAttrMessage, 'Success copy to clipboard.');
+        options?.success?.(message, el);
     };
-}
+};

@@ -14,6 +14,7 @@ export default [
             './src/behaviors/index.ts',
             './src/browser/index.ts',
             './src/observability/index.ts',
+            './src/ui/index.ts',
         ],
         preserveEntrySignatures: 'exports-only',
         output: {

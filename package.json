@@ -21,6 +21,10 @@
         "./observability/*": {
             "types": "./dist/observability/*.d.ts",
             "import": "./dist/observability/*.js"
+        },
+        "./ui/*": {
+            "types": "./dist/ui/*.d.ts",
+            "import": "./dist/ui/*.js"
         }
     },
     "files": [

@@ -1,9 +1,10 @@
 import { navigateTo } from '../browser/navigation';
+import { DomEventCallback } from '../dom';
 
 export const kAttrHref = 'data-href';
 export const kAttrConfirm = 'data-confirm';
 
-export function confirmBehavior(element: HTMLElement, event: Event): void {
+export const confirmBehavior: DomEventCallback<HTMLElement> = (element: HTMLElement, event: Event): void => {
     event.preventDefault();
 
     const href = element.getAttribute(kAttrHref);
@@ -16,4 +17,4 @@ export function confirmBehavior(element: HTMLElement, event: Event): void {
     if (confirm(message)) {
         navigateTo(href);
     }
-}
+};
