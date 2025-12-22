@@ -12,7 +12,8 @@ export default [
         input: [
             './src/dom/index.ts',
             './src/behaviors/index.ts',
-            './src/browser/index.ts'
+            './src/browser/index.ts',
+            './src/observability/index.ts',
         ],
         preserveEntrySignatures: 'exports-only',
         output: {

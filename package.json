@@ -13,6 +13,14 @@
         "./behaviors/*": {
             "types": "./dist/behaviors/*.d.ts",
             "import": "./dist/behaviors/*.js"
+        },
+        "./browser/*": {
+            "types": "./dist/browser/*.d.ts",
+            "import": "./dist/browser/*.js"
+        },
+        "./observability/*": {
+            "types": "./dist/observability/*.d.ts",
+            "import": "./dist/observability/*.js"
         }
     },
     "files": [
@@ -35,6 +43,7 @@
         "vitest": "~4.0"
     },
     "peerDependencies": {
+        "@sentry/browser": "^10.32.0",
         "toastr": "^2.1.4",
         "notyf": "^3.10.0"
     },
