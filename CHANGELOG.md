@@ -1,8 +1,13 @@
 CHANGELOG
 =========
 
-Next release
-------------
+v1.0.4
+------
+
+* Add grouped imports (`/dom`, `/behavoirs`, etc...)
+
+v1.0.3
+------
 
 * Add Sentry helpers.
 * Add few behaviors for dom events (copy/confirm/processing).

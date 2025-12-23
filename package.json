@@ -1,26 +1,46 @@
 {
     "name": "@fivelab/web-utils",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "private": false,
     "type": "module",
     "description": "The helpers for easy manipulate with dom.",
     "license": "MIT",
     "exports": {
+        "./dom": {
+            "types": "./dist/dom/index.d.ts",
+            "import": "./dist/dom/index.js"
+        },
         "./dom/*": {
             "types": "./dist/dom/*.d.ts",
             "import": "./dist/dom/*.js"
+        },
+        "./behaviors": {
+            "types": "./dist/behaviors/index.d.ts",
+            "import": "./dist/behaviors/index.js"
         },
         "./behaviors/*": {
             "types": "./dist/behaviors/*.d.ts",
             "import": "./dist/behaviors/*.js"
         },
+        "./browser": {
+            "types": "./dist/browser/index.d.ts",
+            "import": "./dist/browser/index.js"
+        },
         "./browser/*": {
             "types": "./dist/browser/*.d.ts",
             "import": "./dist/browser/*.js"
         },
+        "./observability": {
+            "types": "./dist/observability/index.d.ts",
+            "import": "./dist/observability/index.js"
+        },
         "./observability/*": {
             "types": "./dist/observability/*.d.ts",
             "import": "./dist/observability/*.js"
+        },
+        "./ui": {
+            "types": "./dist/ui/index.d.ts",
+            "import": "./dist/ui/index.js"
         },
         "./ui/*": {
             "types": "./dist/ui/*.d.ts",
@@ -47,9 +67,20 @@
         "vitest": "~4.0"
     },
     "peerDependencies": {
-        "@sentry/browser": "^10.32.0",
-        "toastr": "^2.1.4",
-        "notyf": "^3.10.0"
+        "@sentry/browser": "^10.0",
+        "toastr": "^2.0",
+        "notyf": "^3.0"
+    },
+    "peerDependenciesMeta": {
+        "@sentry/browser": {
+            "optional": true
+        },
+        "toastr": {
+            "optional": true
+        },
+        "notyf": {
+            "optional": true
+        }
     },
     "scripts": {
         "clean": "rm -rf dist/*",
