@@ -20,10 +20,6 @@ describe('create toastr adapter', () => {
         adapter = createToastAdapter();
     });
 
-    afterEach(() => {
-        vi.resetAllMocks();
-    });
-
     it('success', async () => {
         await adapter.success('success message');
 

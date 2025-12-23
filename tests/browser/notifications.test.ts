@@ -30,10 +30,6 @@ vi.mock('../../src/browser/notifications/adapter', () => {
     };
 });
 
-afterEach(() => {
-    vi.resetAllMocks();
-});
-
 describe('notify success', () => {
     it('notify', async () => {
         const {getAdapter, success} = createAdapter();

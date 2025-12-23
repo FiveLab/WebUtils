@@ -25,10 +25,6 @@ describe('create notyf adapter', () => {
         adapter = createNotyfAdapter();
     });
 
-    afterEach(() => {
-        vi.resetAllMocks();
-    });
-
     it('success', async () => {
         await adapter.success('success message');
 

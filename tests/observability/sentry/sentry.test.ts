@@ -70,10 +70,6 @@ describe('load sentry', () => {
         __test__?.reset();
     });
 
-    afterEach(() => {
-        vi.resetAllMocks();
-    });
-
     it('success load', async () => {
         configureSentry('dsn', 'https://sentry.org');
 

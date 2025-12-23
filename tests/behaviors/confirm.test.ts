@@ -18,10 +18,6 @@ describe('confirm behavior', () => {
         });
     });
 
-    afterEach(() => {
-        vi.resetAllMocks();
-    });
-
     it('confirmed', () => {
         vi.spyOn(window, 'confirm').mockReturnValue(true);
 

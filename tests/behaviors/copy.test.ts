@@ -29,11 +29,6 @@ describe('copy behavior', () => {
             '<a href="#" data-copy="abra" id="with-hash"></a>';
     });
 
-    afterEach(() => {
-        vi.unstubAllGlobals();
-        vi.resetAllMocks();
-    });
-
     it('success copy', async () => {
         const copyBehavior = createCopyBehavior();
         await copyBehavior(document.getElementById('single-copy')!, event);
