@@ -23,7 +23,7 @@ type SelectorsListenOptions<E extends Element = Element> = BaseListenOptions & {
 export function onDomEvents<E extends Element = Element>(eventName: EventName, options: SelectorListenOptions | string, handler: DomEventCallback<E>): void;
 export function onDomEvents<E extends Element = Element>(eventName: EventName, options: SelectorsListenOptions<E>): void;
 
-export function onDomEvents<E extends Element = Element>(eventName: EventName, options: SelectorListenOptions | SelectorsListenOptions<E> | string, handler?: DomEventCallback<E>): void {
+export function onDomEvents(eventName: EventName, options: SelectorListenOptions | SelectorsListenOptions | string, handler?: DomEventCallback): void {
     if (typeof options === 'string') {
         options = <SelectorListenOptions>{
             selector: options,

@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+Next release
+------------
+
+* Add form control helpers.
+* Add file helpers.
+
 v1.0.4
 ------
 

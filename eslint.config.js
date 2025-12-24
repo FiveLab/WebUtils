@@ -27,7 +27,7 @@ export default [
             'semi': ['error', 'always'],
             'quotes': ['error', 'single'],
             'comma-dangle': ['error', 'always-multiline'],
-            'indent': ['error', 4],
+            'indent': ['error', 4, { SwitchCase: 1 }],
             'object-curly-spacing': ['error', 'always'],
             'arrow-parens': ['error', 'always'],
             'eqeqeq': ['error', 'always'],

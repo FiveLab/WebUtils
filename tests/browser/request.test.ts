@@ -1,6 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, Mock, vi } from 'vitest';
-import { request } from '../../src/browser/request';
-import { fetchMock, MockXMLHttpRequest } from '../setup';
+import { request } from '../../src/browser';
+import { fetchMock } from '../mock/fetch';
+import { XMLHttpRequestMock } from '../mock/xhr';
 
 describe('request', () => {
     it.each([
@@ -83,7 +84,7 @@ describe('request', () => {
             }
         });
 
-        const xhr = MockXMLHttpRequest.instance();
+        const xhr = XMLHttpRequestMock.instance();
         xhr.status = 200;
         xhr.response = 'body payload';
         xhr.onload?.();
@@ -115,7 +116,7 @@ describe('request', () => {
             uploadProgress: vi.fn(),
         });
 
-        const xhr = MockXMLHttpRequest.instance();
+        const xhr = XMLHttpRequestMock.instance();
         xhr.getAllResponseHeaders.mockReturnValue('Content-Type: application/json\r\nX-My-Key: foo-bar');
         xhr.mockReturnOk();
 
@@ -133,7 +134,7 @@ describe('request', () => {
             uploadProgress: vi.fn()
         });
 
-        const xhr = MockXMLHttpRequest.instance();
+        const xhr = XMLHttpRequestMock.instance();
         xhr.onerror?.();
 
         await expect(promise).rejects.toThrow(new Error('XHR network error'));
@@ -145,7 +146,7 @@ describe('request', () => {
             uploadProgress: vi.fn()
         });
 
-        const xhr = MockXMLHttpRequest.instance();
+        const xhr = XMLHttpRequestMock.instance();
         xhr.ontimeout?.();
 
         await expect(promise).rejects.toThrow(new Error('XHR timeout error'));

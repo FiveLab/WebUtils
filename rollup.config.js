@@ -10,9 +10,10 @@ const externals = [
 export default [
     {
         input: [
-            './src/dom/index.ts',
             './src/behaviors/index.ts',
             './src/browser/index.ts',
+            './src/core/index.ts',
+            './src/dom/index.ts',
             './src/observability/index.ts',
             './src/ui/index.ts',
         ],

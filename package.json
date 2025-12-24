@@ -6,13 +6,13 @@
     "description": "The helpers for easy manipulate with dom.",
     "license": "MIT",
     "exports": {
-        "./dom": {
-            "types": "./dist/dom/index.d.ts",
-            "import": "./dist/dom/index.js"
+        "./browser": {
+            "types": "./dist/browser/index.d.ts",
+            "import": "./dist/browser/index.js"
         },
-        "./dom/*": {
-            "types": "./dist/dom/*.d.ts",
-            "import": "./dist/dom/*.js"
+        "./browser/*": {
+            "types": "./dist/browser/*.d.ts",
+            "import": "./dist/browser/*.js"
         },
         "./behaviors": {
             "types": "./dist/behaviors/index.d.ts",
@@ -22,13 +22,21 @@
             "types": "./dist/behaviors/*.d.ts",
             "import": "./dist/behaviors/*.js"
         },
-        "./browser": {
-            "types": "./dist/browser/index.d.ts",
-            "import": "./dist/browser/index.js"
+        "./core": {
+            "types": "./dist/core/index.d.ts",
+            "import": "./dist/core/index.js"
         },
-        "./browser/*": {
-            "types": "./dist/browser/*.d.ts",
-            "import": "./dist/browser/*.js"
+        "./core/*": {
+            "types": "./dist/core/*.d.ts",
+            "import": "./dist/core/*.js"
+        },
+        "./dom": {
+            "types": "./dist/dom/index.d.ts",
+            "import": "./dist/dom/index.js"
+        },
+        "./dom/*": {
+            "types": "./dist/dom/*.d.ts",
+            "import": "./dist/dom/*.js"
         },
         "./observability": {
             "types": "./dist/observability/index.d.ts",
