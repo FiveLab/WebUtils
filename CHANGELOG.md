@@ -1,11 +1,13 @@
 CHANGELOG
 =========
 
-Next release
-------------
+v1.0.5
+------
 
 * Add form control helpers.
 * Add file helpers.
+* Add time utils.
+* Add textarea behaviors.
 
 v1.0.4
 ------
