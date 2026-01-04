@@ -1,14 +1,12 @@
 import { addClass, disableElement, DomChangeCallback, enableElement, readBoolAttribute, readStringAttribute, removeClass } from '../dom';
 import { createSpinner } from '../ui';
+import { kAttrProcessing, kAttrProcessingMode } from '../core/constants';
 
 type ProcessingMode = 'prepend' | 'replace';
 
-export const kProcessingAttribute = 'data-processing';
-export const kProcessingModeAttribute = 'data-processing-mode';
-
 export const processingBehavior: DomChangeCallback<HTMLElement> = (element): void => {
-    const processing = readBoolAttribute(element, kProcessingAttribute);
-    const mode: ProcessingMode = <ProcessingMode>readStringAttribute(element, kProcessingModeAttribute, 'prepend');
+    const processing = readBoolAttribute(element, kAttrProcessing);
+    const mode: ProcessingMode = <ProcessingMode>readStringAttribute(element, kAttrProcessingMode, 'prepend');
 
     if (processing) {
         if (element.querySelector('[role="status"]')) {

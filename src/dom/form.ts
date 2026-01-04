@@ -1,6 +1,6 @@
 import { readBoolAttribute } from './attributes';
-import { kProcessingAttribute } from '../behaviors';
 import { isDisabled } from './state';
+import { kAttrProcessing } from '../core/constants';
 
 type FormElementValue = | string | boolean | number | File | File[] | null;
 type OutputCtor = typeof FormData | typeof URLSearchParams;
@@ -27,7 +27,7 @@ export function startFormProcessing(form: HTMLFormElement): void {
         el.setAttribute(kAttrFormProcessing, 'true');
     });
 
-    form.querySelector('button[type="submit"]')?.setAttribute(kProcessingAttribute, '1');
+    form.querySelector('button[type="submit"]')?.setAttribute(kAttrProcessing, '1');
 }
 
 export function endFormProcessing(form: HTMLFormElement): void {
@@ -39,7 +39,7 @@ export function endFormProcessing(form: HTMLFormElement): void {
         }
     });
 
-    form.querySelector('button[type="submit"]')?.removeAttribute(kProcessingAttribute);
+    form.querySelector('button[type="submit"]')?.removeAttribute(kAttrProcessing);
 }
 
 export function readInputValue(element: HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement): string {

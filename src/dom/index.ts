@@ -7,4 +7,5 @@ export * from './html';
 export * from './ready';
 export * from './state';
 export * from './text';
+export * from './textarea';
 export * from './visibility';

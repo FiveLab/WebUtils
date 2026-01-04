@@ -1,12 +1,10 @@
 import { copyToClipboard } from '../browser';
 import { DomEventCallback, readStringAttribute } from '../dom';
+import { kAttrCopy, kAttrMessage } from '../core/constants';
 
 export type CopyBehaviorOptions = {
     success?: (text: string, element: HTMLElement) => void;
 };
-
-export const kAttrCopy = 'data-copy';
-export const kAttrMessage = 'data-copy-message';
 
 const copyBehavior: DomEventCallback<HTMLElement> = async (element: HTMLElement, event: Event) => {
     if (element.nodeName.toLowerCase() === 'a' && element.getAttribute('href') === '#') {

@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, Mock, vi } from 'vitest';
+import { beforeEach, describe, expect, it, Mock, vi } from 'vitest';
 import { createCopyBehavior } from '../../src/behaviors';
 
 function mockClipboard(): Mock {
@@ -25,7 +25,7 @@ describe('copy behavior', () => {
         writeText = mockClipboard();
 
         document.body.innerHTML = '<a data-copy="value for copy" id="single-copy">Copy single</a>' +
-            '<a data-copy="value for copy 2" data-copy-message="SUCCESS COPY" id="copy-with-message">Copy with message</a>' +
+            '<a data-copy="value for copy 2" data-message="SUCCESS COPY" id="copy-with-message">Copy with message</a>' +
             '<a href="#" data-copy="abra" id="with-hash"></a>';
     });
 

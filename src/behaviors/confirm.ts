@@ -1,8 +1,6 @@
 import { navigateTo } from '../browser/navigation';
 import { DomEventCallback } from '../dom';
-
-export const kAttrHref = 'data-href';
-export const kAttrConfirm = 'data-confirm';
+import { kAttrConfirm, kAttrHref } from '../core/constants';
 
 export const confirmBehavior: DomEventCallback<HTMLElement> = (element: HTMLElement, event: Event): void => {
     event.preventDefault();

@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it } from 'vitest';
 import { endFormProcessing, readBooleanInput, readCheckboxValue, readElementValue, readFileInput, readFormData, readInputValue, readNumberInput, readRadioValue, startFormProcessing } from '../../src/dom';
-import { kProcessingAttribute } from '../../src/behaviors';
+import { kAttrProcessing } from '../../src/core/constants';
 
 describe('form processing helpers', () => {
     let form: HTMLFormElement;
@@ -30,7 +30,7 @@ describe('form processing helpers', () => {
 
         expect(enabledInput.disabled).toBe(true);
         expect(button.disabled).toBe(true);
-        expect(button.getAttribute(kProcessingAttribute)).toBe('1');
+        expect(button.getAttribute(kAttrProcessing)).toBe('1');
         expect(disabledInput.disabled).toBe(true);
     });
 
@@ -48,7 +48,7 @@ describe('form processing helpers', () => {
 
         expect(enabledInput.disabled).toBe(false);
         expect(button.disabled).toBe(false);
-        expect(button.getAttribute(kProcessingAttribute)).toBeNull();
+        expect(button.getAttribute(kAttrProcessing)).toBeNull();
         expect(disabledInput.disabled).toBe(true);
     });
 
