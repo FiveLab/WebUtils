@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+v1.0.6
+------
+
+* Removed notification adapters from `browser/index`; use direct imports from `browser/notification/*` instead.
+
 v1.0.5
 ------
 

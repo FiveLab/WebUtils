@@ -14,6 +14,10 @@
             "types": "./dist/browser/*.d.ts",
             "import": "./dist/browser/*.js"
         },
+        "./browser/notifications/*": {
+            "types": "./dist/browser/notifications/*.d.ts",
+            "import": "./dist/browser/notifications/*.js"
+        },
         "./behaviors": {
             "types": "./dist/behaviors/index.d.ts",
             "import": "./dist/behaviors/index.js"

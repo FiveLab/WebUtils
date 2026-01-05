@@ -1,7 +1,5 @@
 import { getAdapter } from './notifications/adapter';
 export { registerNotificationAdapter } from './notifications/adapter';
-export { createToastAdapter } from './notifications/toastr';
-export { createNotyfAdapter } from './notifications/notyf';
 
 export async function notifySuccess(message: string) {
     await getAdapter().success(message);

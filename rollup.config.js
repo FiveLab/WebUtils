@@ -12,6 +12,8 @@ export default [
         input: [
             './src/behaviors/index.ts',
             './src/browser/index.ts',
+            './src/browser/notifications/toastr.ts',
+            './src/browser/notifications/notyf.ts',
             './src/core/index.ts',
             './src/dom/index.ts',
             './src/observability/index.ts',
