@@ -1,10 +1,11 @@
 CHANGELOG
 =========
 
-Next release
-------------
+v1.0.9
+------
 
 * Add support `URL` instance for `request` helper.
+* Add `createElement` helper.
 
 v1.0.8
 ------

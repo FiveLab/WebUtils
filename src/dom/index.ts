@@ -1,6 +1,7 @@
 export * from './attributes';
 export * from './changes';
 export * from './classes';
+export * from './create-element';
 export * from './events';
 export * from './form';
 export * from './html';

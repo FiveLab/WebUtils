@@ -1,3 +1,5 @@
+import { createElement } from '../dom';
+
 export type AppendScriptOptions = {
     type?: string;
     async?: boolean;
@@ -53,22 +55,13 @@ export function appendScript(src: string, options: AppendScriptOptions = {}): Pr
     }
 
     const promise: Promise<HTMLScriptElement> = new Promise((resolve, reject) => {
-        const script = document.createElement('script');
-
-        script.src = src;
-        script.type = options.type ?? 'text/javascript';
-
-        if (options.async !== undefined) {
-            script.async = options.async;
-        }
-
-        if (options.defer !== undefined) {
-            script.defer = options.defer;
-        }
-
-        if (options.attributes) {
-            Object.entries(options.attributes).forEach(([k, v]) => script.setAttribute(k, v));
-        }
+        const script = createElement('script', {
+            src: src,
+            type: options.type ?? 'text/javascript',
+            async: options.async,
+            defer: options.defer,
+            attrs: options.attributes,
+        });
 
         const cleanup = () => {
             script.removeEventListener('load', onLoad);
@@ -119,18 +112,12 @@ export function appendStyle(href: string, options: AppendStyleOptions = {}): Pro
     }
 
     const promise = new Promise<HTMLLinkElement>((resolve, reject) => {
-        const link = document.createElement('link');
-
-        link.rel = 'stylesheet';
-        link.href = href;
-
-        if (options.media) {
-            link.media = options.media;
-        }
-
-        if (options.attributes) {
-            Object.entries(options.attributes).forEach(([k, v]) => link.setAttribute(k, v));
-        }
+        const link = createElement('link', {
+            href: href,
+            rel: 'stylesheet',
+            media: options.media,
+            attrs: options.attributes,
+        });
 
         const onLoad = () => {
             resolve(link);
