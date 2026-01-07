@@ -12,7 +12,7 @@ export type CommonOptions = {
 };
 
 export type BaseOptions = CommonOptions & {
-    classList?: string[];
+    classList?: Array<string | null | undefined>;
     style?: Partial<CSSStyleDeclaration>;
 } & ContentOptions;
 
@@ -118,7 +118,8 @@ export function createElement(tag: string, options: BaseOptions = {}): HTMLEleme
     }
 
     if (options.classList && options.classList.length) {
-        el.classList.add(...options.classList);
+        const classes = options.classList.filter((e): e is string => Boolean(e));
+        el.classList.add(...classes);
     }
 
     if (options.dataset) {

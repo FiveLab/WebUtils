@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+v1.0.10
+-------
+
+* Add possible pass classes as `null` or `undefined` to `createElement`.
+
 v1.0.9
 ------
 

@@ -13,6 +13,14 @@ describe('create element', () => {
         expect([...el.classList]).toEqual(expect.arrayContaining(['a', 'b']));
     });
 
+    it('creates element with null and undefined classes', () => {
+        const el = createElement('div', {
+            classList: ['a', null, 'c', undefined, 'b']
+        });
+
+        expect([...el.classList]).toEqual(expect.arrayContaining(['a', 'c', 'b']));
+    });
+
     it('sets textContent (including empty string)', () => {
         const el1 = createElement('span', { text: 'hello' });
         expect(el1.textContent).toBe('hello');
