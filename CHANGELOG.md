@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+v1.0.7
+------
+
+* Add helper `waitProperty`.
+
 v1.0.6
 ------
 

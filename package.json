@@ -1,6 +1,6 @@
 {
     "name": "@fivelab/web-utils",
-    "version": "1.0.5",
+    "version": "1.0.7",
     "private": false,
     "type": "module",
     "description": "The helpers for easy manipulate with dom.",
