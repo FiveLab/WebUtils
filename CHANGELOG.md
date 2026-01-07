@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+v1.0.8
+------
+
+* Add assets helpers.
+
 v1.0.7
 ------
 
