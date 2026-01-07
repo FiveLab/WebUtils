@@ -98,11 +98,15 @@ function parseXhrHeaders(raw: string): Headers {
     return headers;
 }
 
-export function request(url: string): Promise<Response>;
-export function request(url: string, init?: RequestInit): Promise<Response>;
-export function request(url: string, init: UploadRequestInit): Promise<Response>;
+export function request(url: URL | string): Promise<Response>;
+export function request(url: URL | string, init?: RequestInit): Promise<Response>;
+export function request(url: URL | string, init: UploadRequestInit): Promise<Response>;
 
-export function request(url: string, init?: unknown): Promise<Response> {
+export function request(url: URL | string, init?: unknown): Promise<Response> {
+    if (url instanceof URL) {
+        url = url.href;
+    }
+
     if (init && isUploadRequestInit(init)) {
         return xhrRequest(url, init);
     }

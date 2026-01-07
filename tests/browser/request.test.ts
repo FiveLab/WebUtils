@@ -20,6 +20,13 @@ describe('request', () => {
         expect(response).toStrictEqual(new Response(null, {status: status}));
     });
 
+    it('succeeds with URL instance', async () => {
+        await request(new URL('/path?k=v', 'https://foo.local'));
+
+        expect(fetchMock).toHaveBeenCalledOnce();
+        expect(fetchMock).toHaveBeenCalledWith('https://foo.local/path?k=v', undefined);
+    });
+
     it('succeeds for GET request via fetch with custom options', async () => {
         const resultResponse = new Response(null, {
             status: 200,

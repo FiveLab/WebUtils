@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+Next release
+------------
+
+* Add support `URL` instance for `request` helper.
+
 v1.0.8
 ------
 
